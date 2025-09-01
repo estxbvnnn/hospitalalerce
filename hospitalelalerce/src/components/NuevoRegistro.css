@@ -1,0 +1,131 @@
+.view-nuevo {
+  width: min(100% - 2rem, var(--maxw, 1100px));
+  margin-inline: auto;
+  padding: var(--space-xl, 40px) 0 var(--space-lg, 24px);
+}
+
+.view-nuevo .title {
+  margin: 0 0 6px;
+  font-size: clamp(26px, 3.6vw, 36px);
+}
+
+.view-nuevo .subtitle {
+  margin: 0 0 14px;
+  color: var(--muted, #9aa3b2);
+}
+
+/* Form container */
+.view-nuevo form {
+  display: grid;
+  gap: 16px;
+  background: var(--surface-2, #0f152a);
+  border: 1px solid var(--border, #223059);
+  border-radius: var(--radius, 14px);
+  padding: 18px;
+  box-shadow: var(--shadow, 0 10px 30px rgba(0,0,0,.25));
+}
+
+/* Responsive rows */
+.view-nuevo form .row {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+@media (min-width: 760px) {
+  .view-nuevo form .row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Fields */
+.field {
+  display: grid;
+  gap: 6px;
+}
+.field label {
+  color: var(--muted, #9aa3b2);
+  font-size: 14px;
+}
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border, #223059);
+  border-radius: 10px;
+  background: #0c1226;
+  color: var(--text, #e6e9f2);
+  outline: none;
+  transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.field input::placeholder,
+.field textarea::placeholder {
+  color: color-mix(in oklab, var(--muted, #9aa3b2) 80%, transparent);
+}
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: #33508f;
+  box-shadow: 0 0 0 3px rgba(79,140,255,.15);
+  background: #0d142b;
+}
+
+/* Checkbox inline (Revisado) */
+.field label > input[type="checkbox"] {
+  margin-right: 8px;
+  inline-size: 16px;
+  block-size: 16px;
+  accent-color: var(--primary, #4f8cff);
+}
+
+/* Validation hints (optional) */
+.field .hint {
+  font-size: 12px;
+  color: var(--muted, #9aa3b2);
+}
+
+/* Actions */
+.view-nuevo .actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
+.view-nuevo .btn {
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: var(--primary, #4f8cff);
+  color: #fff;
+  border: 0;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(79,140,255,.35);
+  transition: transform .08s ease, background .2s ease;
+}
+.view-nuevo .btn:hover {
+  background: var(--primary-600, #3a73df);
+  transform: translateY(-1px);
+}
+.view-nuevo .btn:disabled {
+  opacity: .7;
+  cursor: not-allowed;
+}
+.view-nuevo .btn--ghost {
+  background: transparent;
+  color: var(--text, #e6e9f2);
+  border: 1px solid var(--border, #223059);
+  box-shadow: none;
+}
+
+/* Wide field helper:
+   If you later add className="field field--full" it will span both columns on desktop */
+@media (min-width: 760px) {
+  .field--full { grid-column: 1 / -1; }
+}
+
+/* Subtle separators (optional) */
+.view-nuevo .section {
+  border-top: 1px dashed color-mix(in oklab, var(--border, #223059) 70%, transparent);
+  margin-top: 6px;
+  padding-top: 12px;
+}

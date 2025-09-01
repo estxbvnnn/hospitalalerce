@@ -1,0 +1,153 @@
+.view-buscar .title {
+  margin: 0 0 6px;
+  font-size: clamp(26px, 3.6vw, 36px);
+  letter-spacing: .2px;
+}
+.view-buscar .subtitle {
+  margin: 0 0 10px;
+  color: var(--muted, #9aa3b2);
+}
+
+/* Fila superior: Volver */
+.view-buscar .backRow {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 8px 0 10px;
+}
+.view-buscar .backRow .btn {
+  min-width: 140px;
+}
+
+/* Botones unificados (base y focus) */
+.view-buscar .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  border: 0;
+  cursor: pointer;
+  transition: transform .08s ease, background .2s ease, box-shadow .2s ease, border-color .2s ease, color .2s ease;
+  letter-spacing: .2px;
+}
+.view-buscar .btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(79,140,255,.22);
+}
+
+/* Variantes */
+.view-buscar .btn--ghost,
+.view-buscar .btn--clear {
+  background: transparent;
+  color: var(--text, #e6e9f2);
+  border: 1px solid var(--border, #223059);
+  backdrop-filter: blur(2px);
+}
+.view-buscar .btn--ghost:hover,
+.view-buscar .btn--clear:hover { border-color: #33508f; }
+.view-buscar .btn--apply {
+  min-width: 160px;
+  background: linear-gradient(180deg, var(--primary, #4f8cff), var(--primary-600, #3a73df));
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(79,140,255,.35);
+  border: 1px solid transparent;
+}
+.view-buscar .btn--apply:hover { filter: brightness(1.05); transform: translateY(-1px); }
+.view-buscar .btn--apply:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+  filter: none;
+  transform: none;
+  box-shadow: none;
+}
+.view-buscar .btn--clear:active { transform: translateY(0); }
+
+/* Formulario (tarjeta) */
+.view-buscar form {
+  display: grid;
+  gap: 16px;
+  background: var(--surface-2, #0f152a);
+  border: 1px solid var(--border, #223059);
+  border-radius: var(--radius, 14px);
+  padding: 18px;
+  box-shadow: var(--shadow, 0 10px 30px rgba(0,0,0,.25));
+}
+.view-buscar form .row {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+.view-buscar form .field label {
+  color: var(--muted, #9aa3b2);
+  font-size: 14px;
+}
+
+/* Acciones del formulario */
+.view-buscar .formActions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* Resumen (conteo / error) */
+.buscar__summary {
+  display: flex;
+  justify-content: flex-end;
+  color: var(--muted, #9aa3b2);
+  font-size: 14px;
+  margin: 6px 0 8px;
+}
+.buscar__summary .error { color: #ff6b6b; }
+
+/* Tabla profesional (usa base global y refuerza el contenedor) */
+.view-buscar .tableWrap {
+  margin-top: 4px;
+  overflow: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border, #223059);
+  background: var(--surface-2, #0f152a);
+  box-shadow: var(--shadow, 0 10px 30px rgba(0,0,0,.25));
+}
+.view-buscar table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: 640px;
+  color: var(--text, #e6e9f2);
+}
+.view-buscar thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #0f1731;
+  color: var(--muted, #9aa3b2);
+  text-align: left;
+  font-weight: 600;
+  font-size: 13.5px;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border, #223059);
+}
+.view-buscar tbody td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border, #223059);
+}
+.view-buscar tbody tr:nth-child(odd) td { background: rgba(255,255,255,.02); }
+.view-buscar tbody tr:hover td { background: rgba(79,140,255,.08); }
+
+.view-buscar .rowActions {
+  display: flex;
+  gap: 8px;
+}
+.view-buscar .rowActions .btn {
+  height: 32px;
+  padding: 0 10px;
+  font-size: 13px;
+  border-radius: 8px;
+}
+
+/* Fin módulo buscar */

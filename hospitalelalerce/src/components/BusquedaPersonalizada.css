@@ -1,0 +1,125 @@
+.view-filtros .title {
+  margin: 0 0 6px;
+  font-size: clamp(26px, 3.6vw, 36px);
+  letter-spacing: .2px;
+}
+.view-filtros .subtitle {
+  margin: 0 0 10px;
+  color: var(--muted, #9aa3b2);
+}
+
+/* Fila superior: Volver / Acciones */
+.view-filtros .backRow,
+.view-filtros .actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.view-filtros .backRow { margin: 8px 0 10px; }
+
+/* Botones unificados (base) */
+.view-filtros .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  border: 0;
+  cursor: pointer;
+  transition: transform .08s ease, background .2s ease, box-shadow .2s ease, border-color .2s ease, color .2s ease;
+  letter-spacing: .2px;
+}
+.view-filtros .btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(79,140,255,.22);
+}
+
+/* Variantes: aplicar / limpiar / ghost */
+.view-filtros .btn--apply {
+  min-width: 160px;
+  background: linear-gradient(180deg, var(--primary, #4f8cff), var(--primary-600, #3a73df));
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(79,140,255,.35);
+  border: 1px solid transparent;
+}
+.view-filtros .btn--apply:hover { filter: brightness(1.05); transform: translateY(-1px); }
+.view-filtros .btn--apply:disabled {
+  opacity: .6; cursor: not-allowed; filter: none; transform: none; box-shadow: none;
+}
+
+.view-filtros .btn--clear,
+.view-filtros .btn--ghost {
+  background: transparent;
+  color: var(--text, #e6e9f2);
+  border: 1px solid var(--border, #223059);
+  backdrop-filter: blur(2px);
+}
+.view-filtros .btn--clear:hover,
+.view-filtros .btn--ghost:hover { border-color: #33508f; }
+.view-filtros .btn--clear:active { transform: translateY(0); }
+
+/* Tarjeta de filtros */
+.view-filtros .filtersGrid {
+  display: grid;
+  gap: 12px;
+  background: var(--surface-2, #0f152a);
+  border: 1px solid var(--border, #223059);
+  border-radius: var(--radius, 14px);
+  padding: 18px;
+  box-shadow: var(--shadow, 0 10px 30px rgba(0,0,0,.25));
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+@media (min-width: 960px) {
+  .view-filtros .filtersGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+.view-filtros .filtersGrid .field { display: grid; gap: 6px; }
+.view-filtros .filtersGrid .field label {
+  color: var(--muted, #9aa3b2);
+  font-size: 14px;
+}
+
+/* Resumen / estados */
+.view-filtros .listar__summary {
+  display: flex;
+  justify-content: flex-end;
+  color: var(--muted, #9aa3b2);
+  font-size: 14px;
+  margin: 6px 0 8px;
+}
+.view-filtros .listar__summary .error { color: #ff6b6b; }
+
+/* Tabla de resultados (consistente con otros módulos) */
+.view-filtros .tableWrap {
+  margin-top: 4px;
+  overflow: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border, #223059);
+  background: var(--surface-2, #0f152a);
+  box-shadow: var(--shadow, 0 10px 30px rgba(0,0,0,.25));
+}
+.view-filtros table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: 760px;
+  color: var(--text, #e6e9f2);
+}
+.view-filtros thead th {
+  position: sticky; top: 0; z-index: 1;
+  background: #0f1731;
+  color: var(--muted, #9aa3b2);
+  text-align: left;
+  font-weight: 600;
+  font-size: 13.5px;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border, #223059);
+}
+.view-filtros tbody td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border, #223059);
+}
+.view-filtros tbody tr:nth-child(odd) td { background: rgba(255,255,255,.02); }
+.view-filtros tbody tr:hover td { background: rgba(79,140,255,.08); }

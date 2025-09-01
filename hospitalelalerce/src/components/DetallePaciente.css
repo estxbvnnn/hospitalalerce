@@ -1,0 +1,27 @@
+.view-detalle .header { margin-bottom: 12px; }
+
+.detail {
+  display: grid;
+  gap: 12px;
+  background: #0f152a;
+  border: 1px solid #223059;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+  color: #e6e9f2;
+}
+
+.detailGrid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(1, 1fr);
+}
+@media (min-width: 760px) { .detailGrid { grid-template-columns: repeat(2, 1fr); } }
+
+.detail strong { display: block; color: #9aa3b2; font-size: 14px; margin-bottom: 2px; }
+
+.detailActions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* Fila de volver (usa clases .btn globales) */
+.view-detalle .actions { margin: 6px 0 8px; }
+.btn:hover { filter: brightness(1.05); transform: translateY(-1px); }

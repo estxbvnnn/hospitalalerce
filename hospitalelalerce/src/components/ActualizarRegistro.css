@@ -1,0 +1,8 @@
+.view-actualizar .header { margin-bottom: 12px; }
+.view-actualizar form {
+  display: grid; gap: 14px;
+  background: #0f152a; border: 1px solid #223059; border-radius: 14px; padding: 18px;
+}
+.view-actualizar form .row { display: grid; gap: 12px; grid-template-columns: repeat(1,1fr); }
+@media (min-width: 760px) { .view-actualizar form .row { grid-template-columns: repeat(2,1fr); } }
+.view-actualizar .actions { display: flex; gap: 10px; flex-wrap: wrap; }

@@ -1,0 +1,183 @@
+.view-listar .toolbar { display: flex; gap: 10px; flex-wrap: wrap; margin: 0 0 12px; }
+.view-listar .toolbar .spacer { flex: 1; }
+
+.listar__header {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+/* Encabezado */
+.view-listar .title {
+  margin: 0 0 6px;
+  font-size: clamp(26px, 3.6vw, 36px);
+  letter-spacing: .2px;
+}
+.view-listar .subtitle {
+  margin: 0 0 10px;
+  color: var(--muted, #9aa3b2);
+}
+
+/* Botones unificados (base y focus) */
+.view-listar .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  border: 0;
+  cursor: pointer;
+  transition: transform .08s ease, background .2s ease, box-shadow .2s ease, border-color .2s ease, color .2s ease;
+  letter-spacing: .2px;
+}
+.view-listar .btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(79,140,255,.22);
+}
+
+/* Variantes */
+.view-listar .btn--ghost,
+.view-listar .btn--clear {
+  background: transparent;
+  color: var(--text, #e6e9f2);
+  border: 1px solid var(--border, #223059);
+  backdrop-filter: blur(2px);
+}
+.view-listar .btn--ghost:hover,
+.view-listar .btn--clear:hover { border-color: #33508f; }
+
+.view-listar .btn--new,
+.view-listar .btn--apply {
+  background: linear-gradient(180deg, var(--primary, #4f8cff), var(--primary-600, #3a73df));
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(79,140,255,.35);
+  border: 1px solid transparent; /* evita jump en hover */
+}
+.view-listar .btn--new:hover,
+.view-listar .btn--apply:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+.view-listar .btn--apply:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+  filter: none;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Fila superior: Volver / Nuevo */
+.view-listar .backRow {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 8px 0 10px;
+}
+.view-listar .backRow .btn {
+  min-width: 120px;
+}
+
+/* Formulario de filtros (tarjeta) */
+.view-listar form {
+  display: grid;
+  gap: 16px;
+  background: var(--surface-2, #0f152a);
+  border: 1px solid var(--border, #223059);
+  border-radius: var(--radius, 14px);
+  padding: 18px;
+  box-shadow: var(--shadow, 0 10px 30px rgba(0,0,0,.25));
+}
+
+/* Grilla responsive de campos */
+.view-listar form .row {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+@media (min-width: 920px) {
+  .view-listar form .row { grid-template-columns: 2fr 1fr 1fr 1fr; }
+}
+
+/* Campos */
+.view-listar form .field label {
+  color: var(--muted, #9aa3b2);
+  font-size: 14px;
+}
+
+/* Acciones del formulario: Aplicar / Limpiar */
+.view-listar .formActions,
+.view-listar .actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+.view-listar .btn--apply { min-width: 160px; }
+.view-listar .btn--clear { min-width: 120px; }
+.view-listar .btn--clear:active {
+  transform: translateY(0); /* sin salto */
+}
+
+/* Resumen (conteo / errores) */
+.listar__summary {
+  display: flex;
+  justify-content: flex-end;
+  color: var(--muted, #9aa3b2);
+  font-size: 14px;
+  margin: 6px 0 8px;
+}
+.listar__summary .error { color: #ff6b6b; }
+
+/* Tabla profesional */
+.view-listar .tableWrap {
+  margin-top: 4px;
+  overflow: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border, #223059);
+  background: var(--surface-2, #0f152a);
+  box-shadow: var(--shadow, 0 10px 30px rgba(0,0,0,.25));
+}
+.view-listar table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: 760px;
+  color: var(--text, #e6e9f2);
+}
+.view-listar thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #0f1731;
+  color: var(--muted, #9aa3b2);
+  text-align: left;
+  font-weight: 600;
+  font-size: 13.5px;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border, #223059);
+}
+.view-listar tbody td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border, #223059);
+}
+.view-listar tbody tr:nth-child(odd) td { background: rgba(255,255,255,.02); }
+.view-listar tbody tr:hover td { background: rgba(79,140,255,.08); }
+
+.view-listar .rowActions {
+  display: flex;
+  gap: 8px;
+}
+.view-listar .rowActions .btn {
+  height: 32px;
+  padding: 0 10px;
+  font-size: 13px;
+  border-radius: 8px;
+}
+.view-listar .emptyCell { color: var(--muted, #9aa3b2); text-align: center; }
+
+/* Fin módulo listar */
