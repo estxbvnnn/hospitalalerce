@@ -1,0 +1,40 @@
+<div class="card">
+  <div *ngIf="loading" class="loading">Cargando...</div>
+  <form *ngIf="!loading" (ngSubmit)="submit()">
+    <h2>Actualizar Registro</h2>
+
+    <label>RUT*:
+      <input [(ngModel)]="model.rut" name="rut"/>
+    </label>
+
+    <label>Nombre*:
+      <input [(ngModel)]="model.nombre" name="nombre"/>
+    </label>
+
+    <label>Edad*:
+      <input type="number" [(ngModel)]="model.edad" name="edad" min="0"/>
+    </label>
+
+    <label>Sexo*:
+      <select [(ngModel)]="model.sexo" name="sexo">
+        <option value="">Seleccione</option>
+        <option value="M">M</option>
+        <option value="F">F</option>
+      </select>
+    </label>
+
+    <label>Enfermedad*:
+      <input [(ngModel)]="model.enfermedad" name="enfermedad"/>
+    </label>
+
+    <label>Foto:
+      <input type="file" (change)="onFileChange($event)" accept=".jpg,.png,.gif,.jpeg"/>
+      <span *ngIf="model.fotoPersonal" class="file-name">{{model.fotoPersonal}}</span>
+    </label>
+
+    <div style="margin-top:12px">
+      <button class="btn" type="submit">Actualizar</button>
+      <a class="btn secondary" [routerLink]="['/listar-registros']" style="margin-left:8px">Cancelar</a>
+    </div>
+  </form>
+</div>

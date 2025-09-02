@@ -1,0 +1,1 @@
+{"ast":null,"code":"export const GLOBAL = {\n  url: 'http://localhost:3001/api' // ahora apunta al server embebido en client\n};","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

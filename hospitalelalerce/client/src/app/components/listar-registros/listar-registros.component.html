@@ -1,0 +1,87 @@
+<div class="card">
+  <h2>Listado de Pacientes</h2>
+
+  <form (submit)="onSubmit($event)" style="margin-bottom:12px">
+    <div style="display:flex;flex-wrap:wrap;gap:12px">
+      <div style="flex:1;min-width:180px">
+        <label>Búsqueda</label>
+        <input name="q" [(ngModel)]="filters.q" (ngModelChange)="onChangeField('q',$event)" placeholder="Nombre, RUT o enfermedad" />
+      </div>
+
+      <div style="width:160px">
+        <label>Rango de edad</label>
+        <select name="edad" [(ngModel)]="filters.edad" (ngModelChange)="onChangeField('edad',$event)">
+          <option value="">Todas</option>
+          <option value="0-17">0 - 17</option>
+          <option value="18-40">18 - 40</option>
+          <option value="41-65">41 - 65</option>
+          <option value="66-+">66+</option>
+        </select>
+      </div>
+
+      <div style="width:140px">
+        <label>Sexo</label>
+        <select name="sexo" [(ngModel)]="filters.sexo" (ngModelChange)="onChangeField('sexo',$event)">
+          <option value="">Todos</option>
+          <option value="M">Masculino</option>
+          <option value="F">Femenino</option>
+          <option value="Otro">Otro</option>
+        </select>
+      </div>
+
+      <div style="width:200px">
+        <label>Orden</label>
+        <select name="ordenar" [(ngModel)]="filters.ordenar" (ngModelChange)="onChangeField('ordenar',$event)">
+          <option value="nombre-asc">Nombre (A-Z)</option>
+          <option value="nombre-desc">Nombre (Z-A)</option>
+          <option value="edad-asc">Edad (menor a mayor)</option>
+          <option value="edad-desc">Edad (mayor a menor)</option>
+        </select>
+      </div>
+
+      <div style="align-self:end;display:flex;gap:8px">
+        <button class="btn" type="submit">Aplicar filtros</button>
+        <button type="button" class="btn secondary" (click)="onClear()">Limpiar</button>
+      </div>
+    </div>
+  </form>
+
+  <div class="card" style="padding:8px 12px;margin-bottom:12px">
+    <div *ngIf="loading" class="loading">Cargando...</div>
+    <div *ngIf="!loading">
+      <strong>Total: {{filtered.length}}</strong>
+    </div>
+  </div>
+
+  <div class="tableWrap">
+    <table class="table table--compact" style="width:100%;border-collapse:collapse">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>RUT</th>
+          <th>Edad</th>
+          <th>Sexo</th>
+          <th>Enfermedad</th>
+          <th style="width:220px">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of filtered">
+          <td>{{p.nombre}}</td>
+          <td>{{p.rut}}</td>
+          <td>{{p.edad}}</td>
+          <td>{{p.sexo}}</td>
+          <td>{{p.enfermedad}}</td>
+          <td class="rowActions">
+            <a class="btn" [routerLink]="['/detalle', p._id]">Detalle</a>
+            <a class="btn secondary" [routerLink]="['/actualizar', p._id]">Editar</a>
+            <button class="btn danger" (click)="borrar(p._id)">Eliminar</button>
+          </td>
+        </tr>
+        <tr *ngIf="!loading && filtered.length === 0">
+          <td colspan="6" class="emptyCell">Sin resultados para los filtros aplicados.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

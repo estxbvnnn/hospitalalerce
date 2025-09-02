@@ -1,0 +1,16 @@
+<div class="card">
+  <h2>Últimos 5 registros</h2>
+  <div *ngIf="loading" class="loading">Cargando...</div>
+  <ul *ngIf="!loading" class="patient-list">
+    <li *ngFor="let p of ultimos" class="patient-item">
+      <img [src]="pacienteService.getImageUrl(p.fotoPersonal)" [alt]="p.nombre"/>
+      <div class="meta">
+        <strong>{{p.nombre}}</strong>
+        <small class="text-muted">{{p.enfermedad}} • {{p.fechaIngreso | date:'shortDate'}}</small>
+      </div>
+      <div class="actions">
+        <a class="btn" [routerLink]="['/detalle', p._id]">Ver</a>
+      </div>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,24 @@
+<div class="card">
+  <div *ngIf="loading" class="loading">Cargando...</div>
+  <div *ngIf="!loading && paciente">
+    <div style="display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap">
+      <div>
+        <img [src]="pacienteService.getImageUrl(paciente.fotoPersonal)" [alt]="paciente.nombre" width="160" style="border-radius:8px;object-fit:cover"/>
+      </div>
+      <div style="flex:1">
+        <h2>{{paciente.nombre}}</h2>
+        <p><strong>RUT:</strong> {{paciente.rut}}</p>
+        <p><strong>Edad:</strong> {{paciente.edad}}</p>
+        <p><strong>Sexo:</strong> {{paciente.sexo}}</p>
+        <p><strong>Enfermedad:</strong> {{paciente.enfermedad}}</p>
+        <p><strong>Fecha Ingreso:</strong> {{paciente.fechaIngreso | date:'short'}}</p>
+
+        <div style="margin-top:12px">
+          <a class="btn secondary" [routerLink]="['/actualizar', paciente._id]">Actualizar</a>
+          <button class="btn danger" (click)="eliminar()" style="margin-left:8px">Eliminar</button>
+          <a class="btn" [routerLink]="['/listar-registros']" style="margin-left:8px">Volver</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

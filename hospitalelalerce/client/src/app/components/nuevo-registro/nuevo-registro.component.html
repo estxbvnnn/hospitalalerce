@@ -1,0 +1,37 @@
+<form class="card" (ngSubmit)="submit()">
+  <h2>Nuevo Registro</h2>
+
+  <label>RUT*:
+    <input [(ngModel)]="model.rut" name="rut" placeholder="12345678-9"/>
+  </label>
+
+  <label>Nombre*:
+    <input [(ngModel)]="model.nombre" name="nombre" placeholder="Nombre completo"/>
+  </label>
+
+  <label>Edad*:
+    <input type="number" [(ngModel)]="model.edad" name="edad" min="0"/>
+  </label>
+
+  <label>Sexo*:
+    <select [(ngModel)]="model.sexo" name="sexo">
+      <option value="">Seleccione</option>
+      <option value="M">M</option>
+      <option value="F">F</option>
+    </select>
+  </label>
+
+  <label>Enfermedad*:
+    <input [(ngModel)]="model.enfermedad" name="enfermedad" placeholder="Descripción breve"/>
+  </label>
+
+  <label>Foto:
+    <input type="file" (change)="onFileChange($event)" accept=".jpg,.png,.gif,.jpeg"/>
+    <span *ngIf="model.fotoPersonal" class="file-name">{{model.fotoPersonal}}</span>
+  </label>
+
+  <div style="margin-top:12px">
+    <button class="btn" type="submit">Guardar</button>
+    <a class="btn secondary" [routerLink]="['/listar-registros']" style="text-decoration:none;margin-left:8px">Cancelar</a>
+  </div>
+</form>
